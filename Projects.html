@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+        }
+
+        nav a:hover {
+            background-color: #0f0f0f;
+
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            z-index: 999;
+            background-color: rgba(255, 255, 255, 0.411);
+            backdrop-filter: blur(10px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .sidebar li {
+            width: 100%;
+        }
+
+        .sidebar a {
+            width: 100%;
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        @media(max-width: 800px) {
+            .hideOnMobile {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            /* Full viewport height */
+            background-image: url('https://media.istockphoto.com/id/1480239219/photo/an-analyst-uses-a-computer-and-dashboard-for-data-business-analysis-and-data-management.jpg?s=612x612&w=0&k=20&c=URv6HYZ8L3NCQnxT8-ITvInMW7mlsTE6EjnXHaqF-H4=');
+            /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Dark overlay for shading */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* Adjust opacity as needed */
+        }
+
+        /* Styling the Projects section */
+        .projects-section {
+            padding: 40px;
+            background-color: #f2f2f2;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .projects-section h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Projects grid */
+        .projects {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Single project card */
+        .project-card {
+            background-color: white;
+            width: 30%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Project image styling */
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Project description styling */
+        .project-content {
+            padding: 15px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            color: #0073e6;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="navbar.html">Home</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="Projects.html">Projects</a></li>
+            <li><a href="Blogs.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <ul>
+            <li><a href="navbar.html">PORTFOLIO</a></li>
+            <li class="hideOnMobile"><a href="navbar.html">Home</a></li>
+            <li class="hideOnMobile"><a href="resume.html">Resume</a></li>
+            <li class="hideOnMobile"><a href="Projects.html">Projects</a></li>
+            <li class="hideOnMobile"><a href="Blogs.html">Blogs</a></li>
+            <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
+            <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+
+
+    <section class="hero">
+    </section>
+
+
+    <section class="projects-section">
+        <h2> Projects</h2>
+        <div class="projects">
+            <!-- Project 1 -->
+            <a href="https://github.com/Kishornaval123/Python_Projects/blob/main/IMDB_Dataset_Analysis.ipynb"
+                target="_blank" class="project-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8h_BUGp_0Yxt_QUeBeMu32g4kvJ6deNMW5g&s"
+                    alt="Project 1">
+                <div class="project-content">
+                    <h3>IMDB Dataset Analysis</h3>
+                    <p>Analyzing IMDb dataset to uncover insights on movie trends, ratings, genres, and popularity. With
+                        help of Python libraries Pandas, Matplotlib , Seacborn and other.</p>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="https://public.tableau.com/app/profile/naval.kishor4882/vizzes" target="_blank"
+                class="project-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxiUkolxyhP106rgBFrpXqxSSr4Mh-MQt-XQ&s"
+                    alt="Project 2">
+                <div class="project-content">
+                    <h3>Covid-19 Dataset Analysis</h3>
+                    <p>Analyzing COVID-19 dataset in India to explore cases, deaths, recoveries, vaccination trends, and
+                        regional impacts.
+                </div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="https://github.com/Kishornaval123/Project_SQL/blob/main/Sql%20Covid%20Analysis.sql" target="_blank"
+                class="project-card">
+                <img src="https://dezyre.gumlet.io/images/blog/sql-database-projects-for-data-analysis-to-practice/image_935923909101652454127692.png?w=376&dpr=2.6"
+                    alt="Project 3">
+                <div class="project-content">
+                    <h3>SQL Project</h3>
+                    <p>Developing an SQL project to analyze, query, and visualize data trends, optimize database
+                        structures, and perform complex data operations.</p>
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+
+
+
+
+
+</body>
+<script>
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+    }
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+
+    }
+</script>
+
+</html>
